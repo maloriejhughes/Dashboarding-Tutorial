@@ -1,6 +1,13 @@
 ---
 title: "Untitled"
-output: html_document
+output: 
+  flexdashboard::flex_dashboard:
+    logo: onica_amazon_small.png
+    vertical_layout: scroll
+    orientation: rows
+    css: css/basic_css.css
+    theme: bootstrap
+    
 ---
 
 ```{r setup, include=FALSE}

@@ -75,6 +75,8 @@ slides > slide:not(.nobackground):before {
 
 > - Organized
 
+> - Interactive
+
 > - Reproducible
 
 > - Free
@@ -98,10 +100,10 @@ slides > slide:not(.nobackground):before {
 ## How to DLAB? | A 12 Step Program to Quit Emailing Plots & Csvs
 
 1. Basic Layout
-2. Interactive Plots
-3. Datasets
-4. Exporting
-5. (Model) summary tables
+2. Printing: Tables,Descriptice Stats, Model summaries
+3. Interactive Datasets
+4. Interactive Plots
+5. Exporting
 6. CSS
 7. Branding (Logos,  font, colors)
 8. Footer
@@ -111,6 +113,14 @@ slides > slide:not(.nobackground):before {
 12. Automate or App it (cron, shiny runtime) 
 
 
+## How to DLAB? | A 12 Step Program to Quit Emailing Plots & Csvs
+
+1. Basic Layout
+2. Printing: Tables,Descriptice Stats, Model summaries
+3. Interactive Datasets
+4. Interactive Plots
+5. Exporting
+
 
 # 1. Basic Layout
 <3 flexdashboard <3
@@ -119,46 +129,106 @@ slides > slide:not(.nobackground):before {
  
 ### Before :(
  
-\- \- \- </br>
-title: "Dashboard Like a Boss" </br>
-output: html_document </br>
-\- \- \-
 
+```{r,out.width = "400px"}
+knitr::include_graphics("/Users/malorh/Dropbox/GITHUB/Dashboarding-Tutorial/Slide_images/yaml_before.png")
+``` 
 
 ### After :)
  
-\- \- \- </br>
-title: 'Dashboard Like a Boss' </br>
-output: flexdashboard::flex_dashboard </br>
-\- \- \- 
+```{r,out.width = "400px"}
+knitr::include_graphics("/Users/malorh/Dropbox/GITHUB/Dashboarding-Tutorial/Slide_images/yaml_after.png")
+``` 
+
 
 ## flexdashboard layouts
 
 ### My go-to
 
-\- \- \- </br>
-title: 'Dashboard Like a Boss' </br>
-output: </br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  flexdashboard::flex_dashboard: </br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    vertical_layout: scroll </br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    orientation: rows </br>
-\- \- \- 
-</br>
-</br>
-</br>
+```{r,out.width = "500px"}
+knitr::include_graphics("/Users/malorh/Dropbox/GITHUB/Dashboarding-Tutorial/Slide_images/yaml_goto.png")
+```
 
 *optional*: </br>
 
  + vertical_layout: \{scroll, fill\}
 
  + orientation: \{columns, rows\}
+
  
+#  | print() is simply unacceptable
+# 2. Printing Tables,Descriptive Stats &Model Summaries 
 
 
 
-# 2. Interactive plots | We're not in PowerPoint anymore.
+##   Tables, Descriptive Stats & Model Summaries
 
-##  2. Interactive plots 
+<center>
+<h3>printr
+</br>
+</br>
+<h3>summarytools::dfSummary</h3>
+</br>
+</br>
+stargazer::stargazer</h3>
+</center>
+
+##   Table Printing: my go-to 
+
+</br>
+</br>
+<h3> tables & descriptive stats:  **printr** </h3>
+</br>
+</br>
+<h3> model summaries: **stargazer::stargazer** </h3>
+</br>
+
+
+##  Model Summary & Comparisons | stargazer::stargazer
+
+Which model summary statistics do you wantto include in the output? Bookmark the link for later
+
+https://rdrr.io/cran/stargazer/man/stargazer_stat_code_list.html
+
+# 3. Interactive Datasets 
+
+##  Interactive Datasets 
+
+<center>
+
+
+<h3>DT::datatable</h3>
+</center>
+
+
+## Datasets | DT::datatable 
+
+* pretty printing
+
+* flexible formatting
+
+* column filtering
+
+* csv download
+
+* cell highlighting (think heatmap)
+
+
+
+# 4. Interactive plots | We're not in PowerPoint anymore.
+
+##  4. Interactive plots 
+<center>
+<h3>highcharter</h3></center>
+
+</br>
+</br>
+</br>
+</br>
+</br>
+ggplot2 will always have a place in your heart, but dashboards need more than pngs
+
+##  4. Interactive plots 
 <center>
 <h3>highcharter</h3></center>
 
@@ -169,150 +239,33 @@ output: </br>
 </br>
 </br>
 Other options
-
+       
 * *Maps*:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            leaflet 
 * *Timeseries*:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       dygraphs
 * *ggplot2 compatible*: &nbsp;&nbsp;&nbsp;&nbsp; plotly
 
-# 3. Data, Tables, Model Summaries | print() is simply unacceptable
-
-## Datasets 
-
-<center>
-
-
-<h3>DT::datatable</h3>
-</center>
-
-
-## Datasets 
-
-* DT::datatable ex here
-
-
-##  Tables 
-
-<center>
-<h3>printr</h3>
-</center>
-
-## [ Tables ] printr
-
-\`\`\`\{r\}</br>
-library(printr)</br>
-head(iris)</br>
-\`\`\`</br>
-
-
-```{r,out.width = "800px"}
-knitr::include_graphics("/Users/malorh/Dropbox/Conference_Talks/Dashboarding/Dashboarding/Slide_images/iris_printr.png")
-```
-
-
-##  [ Descriptive Stats & Model Summaries] 
-
-<center>
-<h3>printr + knitr::kable
-</br>
-</br>
-<h3>summarytools::dfSummary</h3>
-</br>
-</br>
-stargazer::stargazer</h3>
-</center>
-
-
-##  [ Descriptive Stats ]  printr + knitr::kable
-
-
-```{r}
-#,results='asis',out.width = "800px", message=FALSE}
-#library(stargazer)
-#stargazer(iris, type='html',style = "qje")
-library('printr')
-knitr::kable(summary(iris),digits = 2)
-```
-
-
-
-##  [ Descriptive Stats ] summarytools::dfSummary
-
-\`\`\`\{r, results='asis'\}</br>
-library(summarytools)
-dfSummary(iris, style='grid', plain.ascii = FALSE, graph.col = FALSE)</br>
-\`\`\`
-
-```{r,out.width = "650px"}
-knitr::include_graphics("/Users/malorh/Dropbox/Conference_Talks/Dashboarding/Dashboarding/Slide_images/iris_summarytools.png")
-```
-
-
-## [ Descriptive Stats ] stargazer::stargazer
-
-\`\`\`\{r,results='asis',out.width = "800px"\}</br>
-library(stargazer)</br>
-stargazer(iris, type='html')</br>
-\`\`\`</br>
-
-
-```{r,results='asis',out.width = "800px", message=FALSE}
-library(stargazer)
-stargazer(iris, type='html',style = "qje")
-```
-
-
-## [ Models ]  stargazer::stargazer
-<div class="columns-2">
-```{r}
-## 2 OLS models
-linear.1 <- lm(rating ~ complaints + privileges + learning + raises + critical,
-data=attitude)
-linear.2 <- lm(rating ~ complaints + privileges + learning, data=attitude)
-## create an indicator dependent variable, and run a probit model
-attitude$high.rating <- (attitude$rating > 70)
-probit.model <- glm(high.rating ~ learning + critical + advance, data=attitude,
-family = binomial(link = "probit"))
-```
-<small><small>
-</br>
-</br>
-\`\`\`\{r, *results='asis'* \}</br>
-
-library(stargazer)</br>
-
-stargazer( linear.1 , linear.2 , probit.model</br>
- &nbsp;&nbsp;&nbsp;&nbsp; , title = "Results"</br>
- &nbsp;&nbsp;&nbsp;&nbsp; , align = TRUE</br>
- &nbsp;&nbsp;&nbsp;&nbsp; , type = 'html'</br>
- &nbsp;&nbsp;&nbsp;&nbsp;  , keep.stat=c("n","ser","adj.rsq"))</br>
-
-\`\`\`</br>
-
-</small></small>
 
 
 
 
-</br>
-</br>
-</br>
-</br>
-</br>
+
+# 4. Exporting 
+
+## Exporting 
+
+* Datasets with DT
+
+* Highcharter Plots
 
 
-```{r, results='asis'}
-library(stargazer)
-stargazer(linear.1, linear.2, probit.model, title="Results", align=TRUE, type='html',keep.stat=c("n","ser","adj.rsq"))
-```
+## Dashboard LIKE A BOSS: pro tips | Let your dashboard work for you
 
-</div>
+> -
+> - start with a simple template & someone else's css 
+> - modify template & css each each time you build a dashboard
+> - start with the essential or the easiest wins
+> - slowly work in:  About page & explanations,  interactive viz, exporting, logo, footer, padding/margins
 
-
-##  Model Summary & Comparisons | stargazer::stargazer
-
-bookmark the link for later
-
-https://rdrr.io/cran/stargazer/man/stargazer_stat_code_list.html
 
 ## Resources |  github.com/maloriejhughes
 <small> <div class="columns-2"> 

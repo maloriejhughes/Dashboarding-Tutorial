@@ -5,7 +5,7 @@ output:
     logo: onica_amazon_small.png
     vertical_layout: scroll
     orientation: rows
-    css: basic_css.css
+    css: css/basic_css.css
     theme: bootstrap
     
 ---
