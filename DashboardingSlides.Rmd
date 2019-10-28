@@ -1,0 +1,342 @@
+---
+title: "Dashboard LIKE A BOSS"
+subtitle: "... for your boss... & a bunch of other people--but mainly FOYOSELF"
+author : "Malorie Hughes"
+output: 
+    ioslides_presentation:
+        widescreen: true
+        smaller: true
+        highlight: monochrome
+        
+---
+
+
+```{r setup, include=FALSE,warning=FALSE,message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+# "... for your boss... and also probably PMs, POs, SMEs, directors, friends, neighbors, whatever--but mainly *FOR YOURSELF*"
+     #   logo:  "onica_amazon_small.png"
+
+library(readr)
+library(dplyr)
+library(readr)
+library(RMySQL)
+library(highcharter)
+library(tidyverse)
+library(lubridate)
+library(DT)
+library(summarytools)
+
+kqed_alpha_palatte<-c(rgb(0, 0, 0, 0.8*256, maxColorValue =  256),rgb(249, 0, 58, 0.8*256,maxColorValue =  256), rgb(2, 170, 232, 0.8*256 ,maxColorValue =  256) , rgb(107, 121, 126, 0.8*256,maxColorValue =  256),rgb(27, 125, 161, 0.8*256,maxColorValue =  256))
+#E80756
+newtheme <- hc_theme_merge(
+  getOption("highcharter.theme"),  
+  hc_theme(colors = kqed_alpha_palatte #rev(c("#c8d3e5", "#6b8fb0","#18415d","#9e94a5","#352440")))#, "#5f4f78", "#9e94a5","#b7bbd0", "#766e9a", "#352440")) 
+  #c("#b3cde0","#6497b1","#005b96","#03396c","#001a33" )) # "#011f4b"   c("#ffffcc","#a1dab4","#41b6c4","#2c7fb8","#253494")
+  #c("#b3cde0","#a1dab4","#41b6c4","#2c7fb8","#253494")         
+) )
+options(highcharter.theme = newtheme)
+```
+
+```{css}
+.gdbar img {
+  width: 253px !important;
+  height: 79px !important;
+  margin: 8px 8px;
+}
+
+.gdbar {
+  width: 400px !important;
+  height: 95px !important;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 5px;
+   
+    text-align: right;
+}
+slides > slide:not(.nobackground):before {
+  width: 75px;
+  height: 25px;
+  background-size: 75px 25px;
+}
+
+
+```
+
+
+# Why bother?
+
+## Why should you DLAB? {.flexbox .vcenter}
+
+> - Pretty!
+
+> - Organized
+
+> - Reproducible
+
+> - Free
+
+> - *You get to use R*
+
+> - Flexible
+
+> - Better visualizations (sorry gg)
+
+> - People will respect you
+
+
+
+## How to DLAB? {.flexbox .vcenter}
+
+<h3>A 12 Step Program to Quit Emailing Plots & Csvs</h3>
+
+
+
+## How to DLAB? | A 12 Step Program to Quit Emailing Plots & Csvs
+
+1. Basic Layout
+2. Interactive Plots
+3. Datasets
+4. Exporting
+5. (Model) summary tables
+6. CSS
+7. Branding (Logos,  font, colors)
+8. Footer
+9. Hosting
+10. Automate-ish (render + system())
+11. Replicate (render with arguments)
+12. Automate or App it (cron, shiny runtime) 
+
+
+
+# 1. Basic Layout
+<3 flexdashboard <3
+
+## .Rmd + flexdashboard 
+ 
+### Before :(
+ 
+\- \- \- </br>
+title: "Dashboard Like a Boss" </br>
+output: html_document </br>
+\- \- \-
+
+
+### After :)
+ 
+\- \- \- </br>
+title: 'Dashboard Like a Boss' </br>
+output: flexdashboard::flex_dashboard </br>
+\- \- \- 
+
+## flexdashboard layouts
+
+### My go-to
+
+\- \- \- </br>
+title: 'Dashboard Like a Boss' </br>
+output: </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  flexdashboard::flex_dashboard: </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    vertical_layout: scroll </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    orientation: rows </br>
+\- \- \- 
+</br>
+</br>
+</br>
+
+*optional*: </br>
+
+ + vertical_layout: \{scroll, fill\}
+
+ + orientation: \{columns, rows\}
+ 
+
+
+
+# 2. Interactive plots | We're not in PowerPoint anymore.
+
+##  2. Interactive plots 
+<center>
+<h3>highcharter</h3></center>
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+Other options
+
+* *Maps*:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            leaflet 
+* *Timeseries*:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       dygraphs
+* *ggplot2 compatible*: &nbsp;&nbsp;&nbsp;&nbsp; plotly
+
+# 3. Data, Tables, Model Summaries | print() is simply unacceptable
+
+## Datasets 
+
+<center>
+
+
+<h3>DT::datatable</h3>
+</center>
+
+
+## Datasets 
+
+* DT::datatable ex here
+
+
+##  Tables 
+
+<center>
+<h3>printr</h3>
+</center>
+
+## [ Tables ] printr
+
+\`\`\`\{r\}</br>
+library(printr)</br>
+head(iris)</br>
+\`\`\`</br>
+
+
+```{r,out.width = "800px"}
+knitr::include_graphics("/Users/malorh/Dropbox/Conference_Talks/Dashboarding/Dashboarding/Slide_images/iris_printr.png")
+```
+
+
+##  [ Descriptive Stats & Model Summaries] 
+
+<center>
+<h3>printr + knitr::kable
+</br>
+</br>
+<h3>summarytools::dfSummary</h3>
+</br>
+</br>
+stargazer::stargazer</h3>
+</center>
+
+
+##  [ Descriptive Stats ]  printr + knitr::kable
+
+
+```{r}
+#,results='asis',out.width = "800px", message=FALSE}
+#library(stargazer)
+#stargazer(iris, type='html',style = "qje")
+library('printr')
+knitr::kable(summary(iris),digits = 2)
+```
+
+
+
+##  [ Descriptive Stats ] summarytools::dfSummary
+
+\`\`\`\{r, results='asis'\}</br>
+library(summarytools)
+dfSummary(iris, style='grid', plain.ascii = FALSE, graph.col = FALSE)</br>
+\`\`\`
+
+```{r,out.width = "650px"}
+knitr::include_graphics("/Users/malorh/Dropbox/Conference_Talks/Dashboarding/Dashboarding/Slide_images/iris_summarytools.png")
+```
+
+
+## [ Descriptive Stats ] stargazer::stargazer
+
+\`\`\`\{r,results='asis',out.width = "800px"\}</br>
+library(stargazer)</br>
+stargazer(iris, type='html')</br>
+\`\`\`</br>
+
+
+```{r,results='asis',out.width = "800px", message=FALSE}
+library(stargazer)
+stargazer(iris, type='html',style = "qje")
+```
+
+
+## [ Models ]  stargazer::stargazer
+<div class="columns-2">
+```{r}
+## 2 OLS models
+linear.1 <- lm(rating ~ complaints + privileges + learning + raises + critical,
+data=attitude)
+linear.2 <- lm(rating ~ complaints + privileges + learning, data=attitude)
+## create an indicator dependent variable, and run a probit model
+attitude$high.rating <- (attitude$rating > 70)
+probit.model <- glm(high.rating ~ learning + critical + advance, data=attitude,
+family = binomial(link = "probit"))
+```
+<small><small>
+</br>
+</br>
+\`\`\`\{r, *results='asis'* \}</br>
+
+library(stargazer)</br>
+
+stargazer( linear.1 , linear.2 , probit.model</br>
+ &nbsp;&nbsp;&nbsp;&nbsp; , title = "Results"</br>
+ &nbsp;&nbsp;&nbsp;&nbsp; , align = TRUE</br>
+ &nbsp;&nbsp;&nbsp;&nbsp; , type = 'html'</br>
+ &nbsp;&nbsp;&nbsp;&nbsp;  , keep.stat=c("n","ser","adj.rsq"))</br>
+
+\`\`\`</br>
+
+</small></small>
+
+
+
+
+</br>
+</br>
+</br>
+</br>
+</br>
+
+
+```{r, results='asis'}
+library(stargazer)
+stargazer(linear.1, linear.2, probit.model, title="Results", align=TRUE, type='html',keep.stat=c("n","ser","adj.rsq"))
+```
+
+</div>
+
+
+##  Model Summary & Comparisons | stargazer::stargazer
+
+bookmark the link for later
+
+https://rdrr.io/cran/stargazer/man/stargazer_stat_code_list.html
+
+## Resources |  github.com/maloriejhughes
+<small> <div class="columns-2"> 
+1. Basic Layout: 
+    + R Markdown + <a href="https://rmarkdown.rstudio.com/flexdashboard/layouts.html">flexdashboard</a> 
+2. Interactive Viz: 
+    + All: <a href="http://jkunst.com/highcharter/">highcharter</a> 
+    + Maps: <a href="https://rstudio.github.io/leaflet/">leaflet</a>, my leaflet <a href="https://github.com/maloriejhughes/Leaflet-tutorial">tutorial</a>
+    + Timeseries: <a href="https://rstudio.github.io/dygraphs/">dygraphs</a>
+    + ggplot2 compatible:<a href="https://plot.ly/r/">plotly</a>
+3. Data/Tables
+    + Datasets: <a href="https://rstudio.github.io/DT/">DT::datatable</a>
+    + Tables & Summaries: <a href="https://cran.r-project.org/web/packages/printr/vignettes/printr.html">printr</a>
+    + Meh IMO: <a href="https://mran.revolutionanalytics.com/snapshot/2018-01-16/web/packages/summarytools/vignettes/Introduction.html">summarytable</a>
+4. Models
+    + Model Summaries: <a href="https://www.jakeruss.com/cheatsheets/stargazer/">stargazer</a>
+5. Exporting Data & Plots
+    + highcharter
+    + custom script
+6. CSS (global settings: themes, layout, background, etc)
+7. html ( in-line style/text changes, images, hyperlinks, web basics )
+8. Branding ( css+html: custom fonts, global color themes, watermarks, etc)
+9. Hosting
+10. Automate-ish (render + system())
+11. Replicate (render with arguments)
+12. Automate or App it (cron, shiny runtime) 
+</small>
