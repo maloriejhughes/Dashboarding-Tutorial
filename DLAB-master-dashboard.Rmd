@@ -1,0 +1,225 @@
+---
+title: 'Dashboard Like a Boss'
+output: 
+  flexdashboard::flex_dashboard:
+    logo: dashboard_source_folder/logos/onica_amazon_small.png
+    vertical_layout: scroll
+    orientation: rows
+    css: dashboard_source_folder/css/basic_css.css
+    theme: bootstrap
+    
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE) # always echo=FALSE for dashboards. No need to show off. you can include source code if you want
+# bc you set echo to false, you don't actually need include=FALSE, message=FALSE, or warning=FALSE in the 
+# chunk "preamble" (can I call it that? if it's called something else can I still call it that?) 
+library(flexdashboard) # dashboards!
+library(highcharter)   # for interactive plots
+library(DT)            # for search/filter/downloadable tables
+library(tidyverse)     # doi
+options(scipen=999)    # keep scientific notation turned off
+```
+
+<div class="footer">
+  <p> DCR 2019 | Malorie Hughes | maloriejhughes@gmail.com | github.com/maloriejhughes </p>
+</div>
+  
+  
+```{r,echo=F}
+# pdated <script> document.write(new Date().toLocaleDateString()); </script> 
+# outline:
+# motivation
+# anatomy of a dashboard. navigation bar != header. 
+# map the anatomy to the css code
+# define the basic components, and the basic attributes that can be modified.
+# everything is like an object. there are 
+# boarders: margin, padding  [learn diff between margin and padding]
+# sizes: font-size, height/width
+# position: fixed, float.....
+
+# can css take variables? how?
+# can i use javascript instead? how?
+# find way to set css global custom options for:
+# value boxes
+# highcharter
+# ggplot
+# datatable
+# color theme
+
+
+# can use shiny runtime. make a skeleton for that and put on github
+# look into navigation menu drop down
+# you can bring the css into your code using a chunk:
+#  ```{css}
+#  ```
+# same way you'd do an r chunk
+
+# create code block looking style option
+```
+
+
+```{r export}
+source('dashboard_source_folder/R/file_export_for_dashboards.R')
+
+
+```
+
+
+Slides {data-orientation="columns"}
+=====================================
+
+Column {data-height=1000}
+-------------------------------------
+
+```{r,dpi=300}
+knitr::include_url('Slides/DashboardingSlides.html', height="1000px")
+```
+ 
+
+1. Basic Layout
+=====================================
+
+Row {data-height=175}
+-------------------------------------
+
+
+### 1-10, how cool are Value Boxes?
+```{r}
+
+valueBox(2
+         )
+```
+
+
+### 1-10, how cool are gauges?
+```{r}
+
+gauge(9 
+      , min = 0 , max = 10
+      , gaugeSectors( success = c(9, 10), warning = c(7, 9), danger = c(0, 7))
+      )
+
+```
+
+### 1-10, how cool are Value Boxes + favicon icons?
+```{r}
+
+valueBox(7
+         , icon="fa-tag"
+         )
+
+```
+
+Row {data-height=300}
+-------------------------------------
+### stuuuuffff
+
+```{r}
+
+
+
+
+
+```
+
+### more stuuuffffff
+
+```{r}
+
+
+```
+
+
+
+
+
+
+
+
+Row {data-height=300}
+-------------------------------------
+
+### great insight
+
+
+```{r}
+
+```
+
+
+### so actionable
+```{r}
+
+```
+
+
+
+
+Row {data-height=1000, .tabset}
+-------------------------------------
+### omg
+
+```{r}
+
+          
+
+```
+
+### it's taaabbbed
+
+```{r}
+
+          
+          
+
+```
+
+
+
+
+
+
+2. Printing {data-orientation="columns"}
+=====================================
+
+Column {data-height=1000}
+-------------------------------------
+
+```{r,dpi=300}
+knitr::include_url('Tutorials/Table-Print-Comparison.html', height="1000px")
+```
+ 
+
+3. Datasets {data-orientation="columns"}
+=====================================
+
+Column {data-height=1000}
+-------------------------------------
+
+```{r,dpi=300}
+knitr::include_url('Tutorials/Including-Datasets.html', height="1000px")
+```
+
+4. Interactive Viz {data-orientation="columns"}
+=====================================
+
+Column {data-height=1000}
+-------------------------------------
+
+```{r,dpi=300}
+knitr::include_url('Tutorials/Highcharter-tutorial.html', height="1000px")
+```
+  
+
+ 
+5. Exporting
+=====================================
+
+Column {data-height=1000}
+-------------------------------------
+
+```{r,dpi=300}
+knitr::include_url('Tutorials/Exporting.html', height="1000px")
+```
+  

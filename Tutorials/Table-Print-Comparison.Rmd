@@ -1,0 +1,106 @@
+---
+title: 'Table Printing'
+output: 
+    html_document:
+    logo: onica_amazon_small.png
+    vertical_layout: scroll
+    css: css/basic_css.css
+    theme: bootstrap
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE) # always echo=FALSE for dashboards. No need to show off. you can include source code if you want
+
+
+## 2 OLS models
+linear.1 <- lm(rating ~ complaints + privileges + learning + raises + critical,
+data=attitude)
+linear.2 <- lm(rating ~ complaints + privileges + learning, data=attitude)
+## create an indicator dependent variable, and run a probit model
+attitude$high.rating <- (attitude$rating > 70)
+probit.model <- glm(high.rating ~ learning + critical + advance, data=attitude,
+family = binomial(link = "probit"))
+```
+## I. Basic Table Printing
+
+### Base
+```{r}
+head(iris)
+```
+
+### printr
+```{r}
+library(printr)
+head(iris)
+unloadNamespace('printr')
+```
+
+## II. Descriptive Stats
+
+### Base
+
+```{r}
+summary(iris)
+```
+
+### printr
+
+```{r}
+library(printr)
+summary(iris)
+unloadNamespace('printr')
+```
+
+### knitr::kable
+
+```{r}
+knitr::kable(summary(iris),digits = 2)
+```
+
+### stargazer
+```{r,results='asis', message=FALSE}
+library(stargazer)
+stargazer(iris, type='html')
+
+```
+
+### summarytools
+```{r, results='asis'}
+library(summarytools)
+dfSummary(iris, style='grid', plain.ascii = FALSE, graph.col = FALSE)
+
+```
+
+## III. Models
+
+
+### Base
+
+```{r}
+summary(linear.1)
+```
+
+### printr
+
+```{r}
+library(printr)
+summary(linear.1)
+unloadNamespace('printr')
+```
+
+### stargazer
+```{r,results='asis',message=FALSE}
+library(stargazer)
+
+stargazer( linear.1 , linear.2 , probit.model
+ , title = "Results"
+ , align = TRUE
+ , type = 'html'
+ , keep.stat=c("n","ser","adj.rsq"))
+```
+
+
+
+
+
+

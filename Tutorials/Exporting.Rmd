@@ -1,0 +1,19 @@
+---
+title: 'Exporting'
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: scroll
+    css: ../dashboard_source_folder/css/basic_css.css
+    code_folding: hide
+    theme: bootstrap
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+#knitr::opts_chunk$set(echo = FALSE) 
+library(flexdashboard) # dashboards!
+library(highcharter)   # for interactive plots
+library(DT)            # for search/filter/downloadable tables
+library(tidyverse)     # doi
+options(scipen=999)    # keep scientific notation turned off
+```
+
