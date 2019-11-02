@@ -11,6 +11,7 @@ output:
 #knitr::opts_chunk$set(echo = TRUE) # always echo=FALSE for dashboards. No need to show off. you can include source code if you want
 
 
+
 ## 2 OLS models
 linear.1 <- lm(rating ~ complaints + privileges + learning + raises + critical,
 data=attitude)
@@ -25,15 +26,13 @@ family = binomial(link = "probit"))
 
 ```{r}
 library(DT)
-source('file_export_for_dashboards.R')
 datatable(iris)
 ```          
 
 ### Advanced DT::datatable
 
 ```{r}
-library(DT)
-source('file_export_for_dashboards.R')
+
 datatable(iris, filter = 'top', extensions = 'Buttons',  options = list( columnDefs = list(list(width = '70px')),
   searchHighlight = TRUE,pageLength = 20  , dom = 'Bfrtip',
                                                                                                  buttons = 
@@ -47,3 +46,8 @@ datatable(iris, filter = 'top', extensions = 'Buttons',  options = list( columnD
 ))))
 
 ```
+
+
+### As a function
+
+Make your life even easier: write a simple datatable function that applies your go-to formatting.  Add the function to an R script in the dashboard supporting scripts folder that you bring along for every dashboard.

@@ -16,7 +16,12 @@ NOTE:
     
     Make an extreme change to a setting to see how it impacts the dashboard layout.
 */
-
+.navbar {
+  border-color:black;
+}
+.navbar-brand {
+color:black!important;
+}
 .navbar-inverse { 
     /* 
     This controls the navigation bar at the top of the html.
@@ -25,13 +30,12 @@ NOTE:
   height: 70px; /* change to 140px and compare */
   font-size: 90%; /* Size of the font that names the pages you can navigate between, not the title of the html */
   background-color: white;
-  font-family: "Courier New", Courier, monospace;
+  /*font-family: "Courier New", Courier, monospace;*/
   position:fixed; /* if you change this to __________ the navigation bar will scroll with the rest of the 
   page rather than act as a separate component that is always present on the screen */
   z-index: 1; /*this puts the nav bar on top so that when you scroll, 
   the content scrolls behind the nav bar. change to -1 to see the difference. */
 }
-
 
 
 body {
@@ -71,20 +75,24 @@ For ex, to apply the h1 "function" to some text, in the markdown you'd type:
 <h1> some text </h1>
 */
 
-h1 {
-  color: rgb(226, 192, 78);
-  font-size: 100%;
+h1 { 
+  font-weight: bold;
+  font-size: 100px;
+  font-family: arial, helvetica;
+  width: 600px;
+  margin: 50px auto;
+  /*color: rgb(226, 192, 78);
+  font-size: 100%;*/
 }
 
 h2 {
-  color: rgb(183, 65, 14);/*rgb(226, 192, 78);/* rgb(112, 111, 111);*/
+  /* color: rgb(183, 65, 14);/*rgb(226, 192, 78);/* rgb(112, 111, 111);*/
   font-size: 121%;
 }
 
 h3 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 109%;
-  font-weight: bold;
-  font-family: "Courier New", Courier, monospace;
 }
 
 h4 {
@@ -93,5 +101,20 @@ h4 {
   font-family: "Courier New", Courier, monospace;
   
 }
+
+.knockout {
+  background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg) -80px -80px;
+  color: red;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  font-size: 100px;
+  font-family: arial, helvetica;
+  width: 600px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+/*body{ background: #444;}*/
 
 

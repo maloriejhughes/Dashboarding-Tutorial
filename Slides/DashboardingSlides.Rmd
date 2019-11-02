@@ -6,6 +6,7 @@ output:
     ioslides_presentation:
         widescreen: true
         smaller: true
+        css: ../dashboard_source_folder/css/starlight-slides_css.css
         highlight: monochrome
         
 ---
@@ -64,6 +65,7 @@ slides > slide:not(.nobackground):before {
 }
 
 
+
 ```
 
 
@@ -71,23 +73,23 @@ slides > slide:not(.nobackground):before {
 
 ## Why should you DLAB? {.flexbox .vcenter}
 
-> - Pretty!
+- Pretty!
 
-> - Organized
+- Organized
 
-> - Interactive
+- Interactive
 
-> - Reproducible
+- Reproducible
 
-> - Free
+- Free
 
-> - *You get to use R*
+- *You get to use R*
 
-> - Flexible
+- Flexible
 
-> - Better visualizations (sorry gg)
+- Better visualizations (sorry gg)
 
-> - People will respect you
+- People will respect you
 
 
 
@@ -96,7 +98,6 @@ slides > slide:not(.nobackground):before {
 <h3>A 12 Step Program to Quit Emailing Plots & Csvs</h3>
 
 
-
 ## How to DLAB? | A 12 Step Program to Quit Emailing Plots & Csvs
 
 1. Basic Layout
@@ -104,22 +105,24 @@ slides > slide:not(.nobackground):before {
 3. Interactive Datasets
 4. Interactive Plots
 5. Exporting
-6. CSS
+6. CSS basics
 7. Branding (Logos,  font, colors)
-8. Footer
+8. Header/Footer
 9. Hosting
 10. Automate-ish (render + system())
 11. Replicate (render with arguments)
 12. Automate or App it (cron, shiny runtime) 
 
 
+
 ## How to DLAB? | A 12 Step Program to Quit Emailing Plots & Csvs
 
-1. Basic Layout
-2. Printing: Tables,Descriptice Stats, Model summaries
-3. Interactive Datasets
-4. Interactive Plots
-5. Exporting
+ 
+<h5>1\. Basic Layout</h5>
+<h5>2\. Printing: Tables, Descriptice Stats, Model summaries</h5>
+<h5>3\. Interactive Datasets</h5>
+<h5>4\. Interactive Plots</h5>
+<h5>5\. Exporting</h5>
 
 
 # 1. Basic Layout
@@ -157,7 +160,7 @@ knitr::include_graphics("Slide_images/yaml_goto.png")
 
  
 #  | print() is simply unacceptable
-# 2. Printing Tables,Descriptive Stats &Model Summaries 
+# 2. Printing Tables, Descriptive Stats & Model Summaries 
 
 
 
@@ -167,7 +170,7 @@ knitr::include_graphics("Slide_images/yaml_goto.png")
 <h3>printr
 </br>
 </br>
-<h3>summarytools::dfSummary</h3>
+summarytools::dfSummary
 </br>
 </br>
 stargazer::stargazer</h3>
@@ -260,11 +263,21 @@ Other options
 
 ## Dashboard LIKE A BOSS: pro tips | Let your dashboard work for you
 
-> -
-> - start with a simple template & someone else's css 
-> - modify template & css each each time you build a dashboard
-> - start with the essential or the easiest wins
-> - slowly work in:  About page & explanations,  interactive viz, exporting, logo, footer, padding/margins
+SIMPLE 
+
+> - Start with a simple template & someone else's css 
+> - Add in the essentials or the lowest hanging fruit as you go
+
+ORGANIZED
+
+> - *Maintain a folder* containing: css, exporting scripts, color palletes, global themes, & templates
+> - Keep a staging folder for exploration--*don't make changes you won't know how to undo*.
+> - Keep expensive data cleaning in a separate script (easier to introduce it later than remove it after)
+
+EXPLORE 
+
+> - Try something new (template, plots, or css) to improve the appearance & usability of each new dashboard
+> - Slowly work in:  About page & explanations,  interactive viz, exporting, logo, footer, padding/margins
 
 
 ## Resources |  github.com/maloriejhughes

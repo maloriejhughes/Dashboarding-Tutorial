@@ -2,15 +2,15 @@
 title: 'Dashboard Like a Boss'
 output: 
   flexdashboard::flex_dashboard:
-    logo: dashboard_source_folder/logos/onica_amazon_small.png
     vertical_layout: scroll
     orientation: rows
-    css: dashboard_source_folder/css/basic_css.css
+    css: dashboard_source_folder/css/starlight_css.css
     theme: bootstrap
     
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+
 knitr::opts_chunk$set(echo = FALSE) # always echo=FALSE for dashboards. No need to show off. you can include source code if you want
 # bc you set echo to false, you don't actually need include=FALSE, message=FALSE, or warning=FALSE in the 
 # chunk "preamble" (can I call it that? if it's called something else can I still call it that?) 
@@ -19,6 +19,8 @@ library(highcharter)   # for interactive plots
 library(DT)            # for search/filter/downloadable tables
 library(tidyverse)     # doi
 options(scipen=999)    # keep scientific notation turned off
+source('dashboard_source_folder/R/file_export_for_dashboards.R')
+
 ```
 
 <div class="footer">
@@ -60,7 +62,6 @@ options(scipen=999)    # keep scientific notation turned off
 
 
 ```{r export}
-source('dashboard_source_folder/R/file_export_for_dashboards.R')
 
 
 ```

@@ -4,6 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     vertical_layout: scroll
     css: ../dashboard_source_folder/css/basic_css.css
+    logo: ../dashboard_source_folder/logos/onica_amazon_small.png
     code_folding: hide
     theme: bootstrap
 ---
@@ -16,6 +17,8 @@ library(DT)            # for search/filter/downloadable tables
 library(tidyverse)     # doi
 options(scipen=999)    # keep scientific notation turned off
 ```
+
+
 
 Basics
 =====================================
@@ -32,7 +35,7 @@ mpgman2 <- mpg %>%
 ## $ year  <int> 1999, 2008, 1999, 2008, 1999, 2008, 1999, 2008, 1999, 20...
 ## $ n     <int> 2, 3, 25, 22, 20, 21, 6, 5, 16, 17, 19, 16, 29, 33
 
-hchart(mpgman2, "column", hcaes(x = class, y = n, group = year))
+hchart(mpgman2, "column", hcaes(x = class, y = n, group = year)) %>% hc_title(text='svlkn')
 ```
 Row {data-height=175}
 -------------------------------------

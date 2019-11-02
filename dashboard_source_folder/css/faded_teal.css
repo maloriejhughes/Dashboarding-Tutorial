@@ -1,0 +1,135 @@
+/*
+
+NOTE: 
+
+[1] If you plan to put your html on the internets, don't go nuts on minor changes to aethetics 
+    without peridically pushing the changes and previewing. Unfortunately the RStudio viewer and 
+    and the in-browser preview can differ slightly from the published html.
+
+[2] Speaking of browsers, confirm that your end users are sane/willing to use chrome 
+    (if not, preview the published html on the browsers they'll use and good luck.)
+
+[3] I don't know sh* about css.  
+    The following contains code I've copied/pasted/edtied, and I think I know what does what.  
+    This css may not be the best way--there could be redundancies or flat out lies, but I guess that's 
+    the point: even you, dear R user, have no excuse for your ugly dashboards. Make them pretty. 
+    
+    Make an extreme change to a setting to see how it impacts the dashboard layout.
+*/
+
+.navbar-inverse { 
+    /* 
+    This controls the navigation bar at the top of the html.
+    You can change the title fonnt/size/color, add a background image, whatev.
+    */
+  height: 90px; /* change to 140px and compare */
+  font-size: 90%; /* Size of the font that names the pages you can navigate between, not the title of the html */
+  /*background-color: white;*/
+  /*font-family: "Courier New", Courier, monospace;*/
+  position:fixed; /* if you change this to __________ the navigation bar will scroll with the rest of the 
+  page rather than act as a separate component that is always present on the screen */
+  z-index: 1; /*this puts the nav bar on top so that when you scroll, 
+  the content scrolls behind the nav bar. change to -1 to see the difference. */
+}
+
+
+body { background: #9cb8b3; }
+
+.navbar-inverse {
+    font: 600 1.5em/1 'Raleway', sans-serif;
+    color: rgba(0,0,0,.5);
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+}
+
+span, span:after {
+    font-weight: 900;
+    color: #efedce;
+    white-space: nowrap;
+    display: inline-block;
+    position: relative;
+    letter-spacing: .1em;
+    padding: .2em 0 .25em 0;
+}
+
+span {
+    font-size: 4em;
+    z-index: 100;
+    text-shadow: .04em .04em 0 #9cb8b3;
+}
+
+span:after {
+    content: attr(data-shadow-text);
+    color: rgba(0,0,0,.35);
+    text-shadow: none;
+    position: absolute;
+    left: .0875em;
+    top: .0875em;
+    z-index: -1;
+    -webkit-mask-image: url(//f.cl.ly/items/1t1C0W3y040g1J172r3h/mask.png);
+}
+
+
+.footer {
+     /* 
+    This controls the footer.  The [0,0] assignment for [left, bottom] says to place the 
+    footer in the bottom right corner, pushing it all the way right with text-align. 
+    The width of 98% keeps the text from going off the screen on the right, which sometimes happens
+    after publishing the html.  
+    Setting the position to fixed means the footer will *always* appears on the screen 
+    in the designated location.
+    */
+    position: fixed; 
+    left: 0;
+    bottom: 0;
+    width: 98%;
+    text-align: right;
+}
+
+/* 
+These are the equivalent of the style formatting options available on some apps like google docs. 
+You can set some "header levels" here to use like functions.  If you want some text to stand out
+between plots, or whenever, you can assign some of these in the CSS and use them like html functions.  
+For ex, to apply the h1 "function" to some text, in the markdown you'd type:
+<h1> some text </h1>
+*/
+
+
+h2 {
+  font-weight: bold;
+  font-family: arial, helvetica;
+  /* color: rgb(183, 65, 14);/*rgb(226, 192, 78);/* rgb(112, 111, 111);*/
+  font-size: 121%;
+}
+
+h3 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 109%;
+}
+
+h4 {
+  font-size: 130%;
+ 
+  font-family: "Courier New", Courier, monospace;
+  
+}
+
+.knockout {
+  background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg) -80px -80px;
+  color: red;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  font-size: 100px;
+  font-family: arial, helvetica;
+  width: 600px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+/*body{ background: #444;}*/
+
+

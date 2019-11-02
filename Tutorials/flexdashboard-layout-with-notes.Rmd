@@ -156,8 +156,6 @@ Note: *When  you use column orientation, you'll have to assign the column width 
 
 
 
-
-</br>
 </br>
 </br>
 
@@ -172,7 +170,14 @@ But, you'll notice: in the column-orientation layout, if you put text in the box
 
 ### so cool 2 {data-height=700}
 
-You can force the box to keep it's assigned height by adding an empty chunk of R code (or not empty, depends on your goal.)
+You can force the box to keep it's assigned height by adding an empty chunk of R code (or not empty, depends on your goal) IMMEDIATELY following the text. If you leave a blank line it won't work for reasons beyond me.
+```{r}
+
+```
+
+### so cool 3 {data-height=700}
+
+Forcing the box size again.
 ```{r}
 
 ```
