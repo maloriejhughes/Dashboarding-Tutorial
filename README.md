@@ -1,6 +1,6 @@
 # Dashboarding-Tutorial
 
-https://maloriejhughes.github.io/
+https://maloriejhughes.github.io/Dashboarding-Tutorial/
 
 ## REFERENCES
 1. Basic Layout: 
