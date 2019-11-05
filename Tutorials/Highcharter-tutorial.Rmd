@@ -74,12 +74,6 @@ colors <- c("#FB1108","#FD150B","#FA7806","#FBE426","#FCFB8F",
             "#F3F5E7", "#C7E4EA","#ABD6E6","#9AD2E1")
 stars$color <- colorize(log(stars$distance), colors)
 
-
-x <- c("Luminosity", "Temperature", "Distance")
-y <- sprintf("{point.%s:.2f}", c("lum", "temp", "distance"))
-tltip <- tooltip_table(x, y)
-
-
 stars %>% 
   hchart( "scatter", hcaes(temp, lum, size = radiussun, color=color)) %>% 
   hc_xAxis(type = "logarithmic" , title = list(text ="Temperature")) %>%       ######
@@ -98,9 +92,9 @@ colors <- c("#FB1108","#FD150B","#FA7806","#FBE426","#FCFB8F",
             "#F3F5E7", "#C7E4EA","#ABD6E6","#9AD2E1")
 stars$color <- colorize(log(stars$distance), colors)
 
-x <- c("Luminosity", "Temperature", "Distance")                          #####  what do you want to name the values
-y <- sprintf("{point.%s:.2f}", c("lum", "temp", "distance"))             #####  column names of the values & formatting to cut off at 2 decimal places
-tltip <- tooltip_table(x, y)                                             #####  creates the tooltip
+x <- c("Luminosity", "Temperature", "Distance")                #####  what do you want to name the values
+y <- sprintf("{point.%s:.2f}", c("lum", "temp", "distance"))   #####  column names of the values & formatting to cut off at 2 decimal places
+tltip <- tooltip_table(x, y)                                   #####  creates the tooltip
 
 stars %>% 
   hchart( "scatter", hcaes(temp, lum, size = radiussun, color=color)) %>% 

@@ -4,7 +4,6 @@ output:
   html_document:
     logo: onica_amazon_small.png
     vertical_layout: scroll
-    code_folding: hide
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
@@ -33,21 +32,12 @@ datatable(iris)
 
 ```{r}
 
-datatable(iris, filter = 'top', extensions = 'Buttons',  options = list( columnDefs = list(list(width = '70px')),
-  searchHighlight = TRUE,pageLength = 20  , dom = 'Bfrtip',
-                                                                                                 buttons = 
-                                                 list( list(
-                                                   extend = 'collection',
-                                                  buttons = list(list(extend='csv',filename='iris_summary.csv'),
-                                                                 list(extend='excel',
-                                                                      filename = 'iris_summary.xlsx') ),text="Download"
-                                                               
-                                                                                                 
-))))
+datatable(iris, filter = 'top',  
+          options = list(   searchHighlight = TRUE, pageLength = 15 ))
 
+
+### idea
+#Make your life even easier: write a simple datatable function that applies your go-to formatting.  Add the function to an R script in the dashboard supporting scripts folder that you bring along for every dashboard.
 ```
 
 
-### As a function
-
-Make your life even easier: write a simple datatable function that applies your go-to formatting.  Add the function to an R script in the dashboard supporting scripts folder that you bring along for every dashboard.

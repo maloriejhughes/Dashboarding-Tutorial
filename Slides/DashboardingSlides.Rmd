@@ -27,15 +27,7 @@ library(lubridate)
 library(DT)
 library(summarytools)
 
-kqed_alpha_palatte<-c(rgb(0, 0, 0, 0.8*256, maxColorValue =  256),rgb(249, 0, 58, 0.8*256,maxColorValue =  256), rgb(2, 170, 232, 0.8*256 ,maxColorValue =  256) , rgb(107, 121, 126, 0.8*256,maxColorValue =  256),rgb(27, 125, 161, 0.8*256,maxColorValue =  256))
-#E80756
-newtheme <- hc_theme_merge(
-  getOption("highcharter.theme"),  
-  hc_theme(colors = kqed_alpha_palatte #rev(c("#c8d3e5", "#6b8fb0","#18415d","#9e94a5","#352440")))#, "#5f4f78", "#9e94a5","#b7bbd0", "#766e9a", "#352440")) 
-  #c("#b3cde0","#6497b1","#005b96","#03396c","#001a33" )) # "#011f4b"   c("#ffffcc","#a1dab4","#41b6c4","#2c7fb8","#253494")
-  #c("#b3cde0","#a1dab4","#41b6c4","#2c7fb8","#253494")         
-) )
-options(highcharter.theme = newtheme)
+
 ```
 
 ```{css}

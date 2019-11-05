@@ -5,16 +5,69 @@ output:
     vertical_layout: scroll
     css: ../dashboard_source_folder/css/basic_css.css
     logo: ../dashboard_source_folder/logos/onica_amazon_small.png
-    code_folding: hide
     theme: bootstrap
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
-#knitr::opts_chunk$set(echo = FALSE) 
+knitr::opts_chunk$set(echo = TRUE) 
 library(flexdashboard) # dashboards!
 library(highcharter)   # for interactive plots
 library(DT)            # for search/filter/downloadable tables
 library(tidyverse)     # doi
 options(scipen=999)    # keep scientific notation turned off
+
 ```
 
+highcharter
+=====================================
+
+```{r, results='hide'}
+source('../dashboard_source_folder/R/file_export_for_dashboards.R')
+
+mpg %>% 
+  count(class, year) %>% 
+   hchart( "column", hcaes(x = class, y = n, group = year))%>%
+hc_exporting(
+    enabled = TRUE, filename="simple_column"
+     , formAttributes=list(target="_blank"),
+               buttons=list(contextButton=list(
+               text="Export", theme=list(fill="transparent"),
+                 menuItems=export)) )
+
+```
+
+### {data-height=600}
+```{r, echo=FALSE}
+source('../dashboard_source_folder/R/file_export_for_dashboards.R')
+mpg %>% 
+  count(class, year) %>% 
+   hchart( "column", hcaes(x = class, y = n, group = year))%>%
+hc_exporting(
+    enabled = TRUE, filename="simple_column"
+     , formAttributes=list(target="_blank"),
+               buttons=list(contextButton=list(
+               text="Export", theme=list(fill="transparent"),
+                 menuItems=export)) )
+
+```
+
+
+datatable
+=====================================
+
+
+```{r}
+library(DT)
+
+iris %>% datatable( extensions = 'Buttons',  options = list(  dom = 'Bfrtip',
+                                                                                                 buttons = 
+                                                 list( list(
+                                                   extend = 'collection',
+                                                  buttons = list(list(extend='csv',filename='iris_summary.csv'),
+                                                                 list(extend='excel',
+                                                                      filename = 'iris_summary.xlsx') ),text="Download"
+                                                               
+                                                                                                 
+))))
+
+```
