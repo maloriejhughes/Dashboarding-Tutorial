@@ -26,17 +26,13 @@ Basics
 <h3>jnbdhndh </h3>
 
 ```{r}
-mpgman2 <- mpg %>% 
-  count(class, year) %>% 
-  glimpse()
-## Observations: 14
-## Variables: 3
-## $ class <chr> "2seater", "2seater", "compact", "compact", "midsize", "...
-## $ year  <int> 1999, 2008, 1999, 2008, 1999, 2008, 1999, 2008, 1999, 20...
-## $ n     <int> 2, 3, 25, 22, 20, 21, 6, 5, 16, 17, 19, 16, 29, 33
 
-hchart(mpgman2, "column", hcaes(x = class, y = n, group = year)) %>% hc_title(text='svlkn')
+ mpg %>% 
+  count(class, year) %>% 
+   hchart( "column", hcaes(x = class, y = n, group = year)) %>% hc_title(text='svlkn')
 ```
+
+
 Row {data-height=175}
 -------------------------------------
  
