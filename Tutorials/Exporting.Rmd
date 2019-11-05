@@ -4,6 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     vertical_layout: scroll
     css: ../dashboard_source_folder/css/basic_css.css
+    logo: ../dashboard_source_folder/logos/onica_amazon_small.png
     code_folding: hide
     theme: bootstrap
 ---

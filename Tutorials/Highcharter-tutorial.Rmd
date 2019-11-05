@@ -1,16 +1,14 @@
 ---
 title: 'Highcharter Tutorial'
 output: 
-  flexdashboard::flex_dashboard:
-    vertical_layout: scroll
-    css: ../dashboard_source_folder/css/basic_css.css
+  html_document:
+    css: ../dashboard_source_folder/css/starlight_css.css
     logo: ../dashboard_source_folder/logos/onica_amazon_small.png
-    code_folding: hide
-    theme: bootstrap
+
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
-#knitr::opts_chunk$set(echo = FALSE) 
+knitr::opts_chunk$set(echo = TRUE) 
 library(flexdashboard) # dashboards!
 library(highcharter)   # for interactive plots
 library(DT)            # for search/filter/downloadable tables
@@ -20,42 +18,96 @@ options(scipen=999)    # keep scientific notation turned off
 
 
 
-Basics
-=====================================
 
-<h3>jnbdhndh </h3>
+</br>
 
-```{r}
+
+
+# Bar chart with hchart() {data-height=700}
+
+```{r,message=FALSE, warning=FALSE}
 
  mpg %>% 
   count(class, year) %>% 
-   hchart( "column", hcaes(x = class, y = n, group = year)) %>% hc_title(text='svlkn')
+   hchart( "column", hcaes(x = class, y = n, group = year))
+```
+
+</br>
+
+
+# Bubble plot
+
+```{r}
+data(stars)
+stars %>% hchart("scatter", hcaes(temp, lum, size = radiussun)) 
 ```
 
 
-Row {data-height=175}
--------------------------------------
- 
-
-Timeseries
-=====================================
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+# axis type = "logarithmic"
+```{r}
+stars %>% 
+  hchart("scatter", hcaes(temp, lum, size = radiussun))  %>% 
+  hc_xAxis(type = "logarithmic") %>%                                    ####
+  hc_yAxis(type = "logarithmic")                                        ####
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+
+# Adding colors via colorize
+```{r}
+colors <- c("#FB1108","#FD150B","#FA7806","#FBE426","#FCFB8F",                     #####
+            "#F3F5E7", "#C7E4EA","#ABD6E6","#9AD2E1")                              #####
+stars$color <- colorize(log(stars$distance), colors)                               #####
+
+stars %>%
+  hchart( "scatter", hcaes(temp, lum, size = radiussun, color=color)) %>%          #####
+  hc_xAxis(type = "logarithmic") %>% 
+  hc_yAxis(type = "logarithmic", gridLineWidth = 0) 
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+# Axis titles
+```{r}
+colors <- c("#FB1108","#FD150B","#FA7806","#FBE426","#FCFB8F",
+            "#F3F5E7", "#C7E4EA","#ABD6E6","#9AD2E1")
+stars$color <- colorize(log(stars$distance), colors)
+
+
+x <- c("Luminosity", "Temperature", "Distance")
+y <- sprintf("{point.%s:.2f}", c("lum", "temp", "distance"))
+tltip <- tooltip_table(x, y)
+
+
+stars %>% 
+  hchart( "scatter", hcaes(temp, lum, size = radiussun, color=color)) %>% 
+  hc_xAxis(type = "logarithmic" , title = list(text ="Temperature")) %>%       ######
+  hc_yAxis(type = "logarithmic", title = list(text ="Luminosity")) %>%         ######
+  hc_title(text='Sweet bubble plot')                                           ######
+
+```
+
+
+
+
+# Custom hover text
+
+```{r}
+colors <- c("#FB1108","#FD150B","#FA7806","#FBE426","#FCFB8F",
+            "#F3F5E7", "#C7E4EA","#ABD6E6","#9AD2E1")
+stars$color <- colorize(log(stars$distance), colors)
+
+x <- c("Luminosity", "Temperature", "Distance")                          #####  what do you want to name the values
+y <- sprintf("{point.%s:.2f}", c("lum", "temp", "distance"))             #####  column names of the values & formatting to cut off at 2 decimal places
+tltip <- tooltip_table(x, y)                                             #####  creates the tooltip
+
+stars %>% 
+  hchart( "scatter", hcaes(temp, lum, size = radiussun, color=color)) %>% 
+  hc_xAxis(type = "logarithmic" , title = list(text ="Temperature")) %>% 
+  hc_yAxis(type = "logarithmic", title = list(text ="Luminosity")) %>% 
+   hc_title(text='Sweet bubble plot')   %>%
+  hc_tooltip(useHTML = TRUE, headerFormat = "", pointFormat = tltip)     ##### use the tooltip
+
+```
+
