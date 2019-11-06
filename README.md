@@ -18,6 +18,11 @@ https://maloriejhughes.github.io/Dashboarding-Tutorial/
     + Model Summaries: <a href="https://www.jakeruss.com/cheatsheets/stargazer/">stargazer</a>
 
 #### FLEXDASHBOARD
+flexdashboard tutorial/presentation:  https://arm.rbind.io/slides/flexdashboard.html#1
+
+flexdashboard + shiny: https://s3.amazonaws.com/assets.datacamp.com/production/course_5798/slides/chapter4.pdf
 
 font awesome favicons: https://fontawesome.com/icons?d=gallery
 
+CSS examples:
+https://github.com/edwardtufte/tufte-css
