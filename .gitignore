@@ -1,5 +1,7 @@
 .DS_Store
-
+Slides/.DS_Store
+Templates/.DS_Store
+Tutorials/.DS_Store
 # History files
 .Rhistory
 .Rapp.history 
