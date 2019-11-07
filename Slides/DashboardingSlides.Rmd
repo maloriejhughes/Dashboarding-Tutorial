@@ -65,23 +65,17 @@ slides > slide:not(.nobackground):before {
 
 ## Why should you DLAB? {.flexbox .vcenter}
 
-- Pretty!
+> - Pretty & organized
 
-- Organized
+> - Risk free, templates galore
 
-- Interactive
+> - Better vizualizations (sorry gg)
 
-- Reproducible
+> - *You get to use R*
 
-- Free
+> - Flexible, reproducible
 
-- *You get to use R*
-
-- Flexible
-
-- Better visualizations (sorry gg)
-
-- People will respect you
+> - People will respect you
 
 
 
