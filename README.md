@@ -1,3 +1,5 @@
+# IMPORTANT: Ignore the master branch.  Use the gh-pages branch bc I suck at github.
+
 # Dashboarding-Tutorial
 
 https://maloriejhughes.github.io/Dashboarding-Tutorial/
