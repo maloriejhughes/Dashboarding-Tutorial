@@ -1,6 +1,7 @@
 ---
-title: "Dashboard LIKE A BOSS"
-subtitle: "... for your boss... & prob other people--but mainly FO YOSELF"
+title: "DASHBOARD   
+LIKE   A   BOSS"
+subtitle: "... for your boss... & prob other people--but mainly FO YO SELF"
 author : "Malorie Hughes"
 output: 
     ioslides_presentation:

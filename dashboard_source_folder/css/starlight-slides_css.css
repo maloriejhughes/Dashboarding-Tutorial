@@ -41,7 +41,7 @@ NOTE:
   font-family: arial, helvetica;
   width: 600px;
   margin: 50px auto;
-  text-align: center;
+  /*text-align: center;*/
   
   
 }
@@ -94,7 +94,8 @@ h1 {
   font-family: arial, helvetica;
   width: 600px;
   margin: 50px auto;
-  text-align: center;
+  letter-spacing: 50px;
+ /* text-align: center;*/
   /*color: rgb(226, 192, 78);
   font-size: 100%;*/
 }
